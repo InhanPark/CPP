@@ -9,38 +9,28 @@ class Point
 private:
     int xpos, ypos;
 public:
-    bool Init(int x, int y);
-};
-
-class Circle
-{
-private:
-public:
-};
-
-class Ring
-{
-private:
-public:
+    Point(int x, int y);
+    ~Point();
 };
 
 /* driver */
 int main()
 {
-    Ring *ring_ptr = new Ring(); 
-    Ring& ring = *ring_ptr;
-    if(!ring.Init(1, 1, 4, 2, 2, 9))
-        std::cout << "Ring Initialization Error" << std::endl;
+    Point *point_ptr = new Point(1, 1); 
+    Point& point = *point_ptr;
 
-    delete ring_ptr;
+    delete point_ptr;
     return 0;
 }
 
 /* functions */
-bool Point::Init(int x, int y)
+Point::Point(int x, int y)
 {
     xpos = x;
     ypos = y;
+}
 
-    return true;
+Point::~Point()
+{
+    //Empty
 }
