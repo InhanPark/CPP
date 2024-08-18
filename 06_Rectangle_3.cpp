@@ -41,7 +41,6 @@ int main()
     if(!pos1.InitMembers(2, 4))
         std::cout << "Initialization Error" << std::endl;
 
-    // static allocation 도 가능함.
     Point *pos2_ptr = new Point(); 
     Point& pos2 = *pos2_ptr;
     if(!pos2.InitMembers(5, 9))

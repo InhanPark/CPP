@@ -1,5 +1,7 @@
 /*
-- 'class Point' 를 보강 변경한 program 이다.
+- Information Hiding (정보은닉) 이란 class 외부에서 내부의 어느 부분은 파악할 수 없도록 하는 것이다. 외부에서 이 정보에 직접 접근 자체가 안되도록 되어있다.
+- 아래는 'class Point' 를 보강 변경한 program 이다. 'private:' 을 사용하여 information hiding 을 하였다.
+- 'const' keyword 를 붙여주면, 정보에 간접 접근은 할 수 있더라도, 변경은 안되어, 정보의 safety 를 강화할 수 있다.
 - 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 혼용해서 써도 동작한다.
 - C 처럼 main 앞에는 header file 만 만들고, 함수들은 main 뒤쪽에 배치해 보았다.
 */
