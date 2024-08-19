@@ -11,17 +11,13 @@ struct 에 전속 함수를 만들 수 있게 하면서 (Class 라는 이름도 
  - Class 를 header 로 사용하고, body 를 별도 file 에 저장한다. 기존 module 과 유사하다.
 4. new-reference 를 사용하여 Heap memory 에서 쓸 수 있다.
  - static 으로 쓰는것도 가능하다.
-
-C++ 에 class 를 도입하며 C 의 장점은 그대로 유지하면서, code 를 만들고 관리하는 것은 많이 편리하게 되었다. Class 를 기존 struct 처럼 사용하면 절차지향 구조로 작성해도 된다.
-
-따라서 모든 C code 를 class 구조로 작성하겠다고 접근하는 것이 맞을 것이다. 간단한 program 은 별도로 header file 이나 body file 을 만들지 않고, main 과 같이 한 file 에서 작성하고, code 가 복잡해지면 분리하는 식으로 사용하면 될 것이다.
 */
 
 
 #include <iostream>
 #include <cstring>
 
-namespace CAR_CONST // namespace 란 이 안에있는 모든것의 앞에 "CAR_CONST::" 를 붙여 준다는것
+namespace CAR_CONST // 이 안에있는 모든것의 앞에 "CAR_CONST::" 를 붙여 준다는것
 {
     enum // enum 은 C 와 동일하게 사용. #define 사용하는 것보다 효과적
     {
