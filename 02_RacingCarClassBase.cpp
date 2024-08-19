@@ -7,13 +7,14 @@ struct 에 전속 함수를 만들 수 있게 하면서 (Class 라는 이름도 
  - Class 를 call 할때 class name 이 call 한 변수명으로 대체된다.
 2. Class 내부변수/함수 접근을 'private', 'public', 'protected' 로 구분할 수 있다.
  - C 의 global, static 등의 사용을 안하거나, 최소화 할 수 있다.
+ - private 으로 막아놓은 data 에의 접근은 별도 전속함수를 통해야만 한다.
 3. Class 를 기존 module 이나 library 처럼 사용할 수 있고, 좀 더 편리하다.
  - Class 를 header 로 사용하고, body 를 별도 file 에 저장한다. 기존 module 과 유사하다.
 4. new-reference 를 사용하여 Heap memory 에서 쓸 수 있다.
  - static 으로 쓰는것도 가능하다.
 */
 
-
+/* header */
 #include <iostream>
 #include <cstring>
 
@@ -29,23 +30,44 @@ namespace CAR_CONST // 이 안에있는 모든것의 앞에 "CAR_CONST::" 를 �
     };
 }
 
-class Car // Class 안에 전속 함수를 넣을 수 있음 (header 만 넣어도 됨)
+struct Car // Class 안에 전속 함수를 넣을 수 있음 (header 만 넣어도 됨)
 {
-private: // class 내부에서만 접근 가능 (함수내에서만 접근 가능한 C의 local variable 과 유사)
+private: // class 전속함수들만 접근 가능. 외부에서는 알수도 없음 (정보은닉)
     char gamerID[CAR_CONST::ID_LEN];
     int fuelGauge;
     int curSpeed;
-// private 기능때문에 외부에서는 class 의 내부를 알 수 없음. (정보은닉)
-public: // 외부에서도 접근 가능 (library 함수와 유사)
+public: // 외부에서도 인지 및 접근 가능 (library 함수와 유사)
     void InitMembers(char *ID, int fuel);
+    // 초기화 등 외부에서 data 에 접근하려면 '전속 함수'를 거쳐야만 함.
     void ShowCarState();
     void Accel();
     void Break();
 };
 
-// 아래의 class 전속 함수들은 'private' 지정된 변수들에 직접 접근이 가능함.
+/* driver */
+int main(void)
+{
+    // main 은 Car class 외부 함수 인데, data 는 private 으로 지정되어 있으므로, 다음과 같이 직접 초기화 못함
+    // Car run99 = {"run99", 100, 0};  
+    Car run99;
+    run99.InitMembers("run99", 100); // class 의 내부 함수로만 가능
 
-void Car::InitMembers(char *ID, int fuel)
+    Car sped77;
+    sped77.InitMembers("sped77", 70);
+
+    run99.Accel(); // class 안에 있는 public data 나 함수는 이렇게 사용하면 됨
+    sped77.Break();
+    run99.ShowCarState();
+    sped77.ShowCarState();
+    run99.Break();
+    sped77.Accel();
+    run99.ShowCarState();
+    sped77.ShowCarState();
+    return 0;
+}
+
+/* function body */
+void Car::InitMembers(char *ID, int fuel) // data 초기화 함수
 {
     strcpy(gamerID, ID);
     fuelGauge = fuel;
@@ -85,26 +107,4 @@ void Car::Break()
     }
 
     curSpeed -= CAR_CONST::BRK_STEP;
-}
-
-int main(void)
-{
-    // main 은 Car class 외부 함수 인데, data 는 private 으로 지정되어 있으므로, 다음과 같이 직접 초기화 못함
-    // Car run99 = {"run99", 100, 0};  
-    // C 에서 다른 함수의 local 변수 값을 직접 지정 못하는것과 같음
-    Car run99;
-    run99.InitMembers("run99", 100); // class 의 내부 함수로만 가능
-
-    Car sped77;
-    sped77.InitMembers("sped77", 70);
-
-    run99.Accel(); // class 안에 있는 public data 나 함수는 이렇게 사용하면 됨
-    sped77.Break();
-    run99.ShowCarState();
-    sped77.ShowCarState();
-    run99.Break();
-    sped77.Accel();
-    run99.ShowCarState();
-    sped77.ShowCarState();
-    return 0;
 }
