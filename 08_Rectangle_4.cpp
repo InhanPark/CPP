@@ -1,6 +1,5 @@
 /*
-- 'class Rectangle' 을 보강 변경한 program 이다. 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 
-- 이제까지 사용하던 'InitMembers' 초기화 함수를 constructor 함수로 바꾸어 본다.
+이제까지 사용하던 'InitMembers' 초기화 함수를 constructor 함수로 바꾸어 본다.
 - constructor 함수는 class 와 같은 이름을 가지고, 초기화가 필요한 parameter 들을 가진, object 생성시에만 한번 사용되는 함수이다. constructor 의 핵심은 "object 가 생성과 동시에 초기화" 되는것이다.
 - "생성과 동시에 초기화" 편리할 뿐만 아니라, 약간이라도 빨라진다. 또한 const 선언된 member value 도 초기화 할 수 있고, reference 를 생성해서 사용할수도 있는 여러가지 장점이 있다.
 - destructor 함수는 object 를 지우기전에 마무리할 것을 하는 함수이다. class 이름앞에 '~' 를 붙인다. 보통 작업중 사용된 dynamic memory 를 해제하는데 사용한다.
@@ -12,7 +11,7 @@
 
 #include <iostream>
 
-/* headers */
+/* header */
 class Point
 {
 private:
@@ -51,7 +50,7 @@ int main()
     return 0;
 }
 
-/* functions */
+/* function body */
 Point::Point(int xpos, int ypos)
 {
     x = xpos;

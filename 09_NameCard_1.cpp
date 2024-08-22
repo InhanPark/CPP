@@ -1,5 +1,5 @@
 /*
-명함관리는 주소록, 단어장 등에 적용가능한 Pattern 이다.
+명함관리는 같은 class (structure) 를 반복해서 call 해야 하는 application 이다. 많이 사용되는 경우이다.
  - enumeration 의 사용법 (class 는 아니고 namespace 만 정의)
  - NameCard 의 data structure 와 method
 */
@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cstring>
 
-/* headers */
+/* header */
 namespace COMP_POS
 {
     enum {CLERK, SENIOR, ASSIST, MANAGER};
@@ -47,7 +47,7 @@ int main()
     return 0;
 }
 
-/* functions */
+/* function body */
 void COMP_POS::ShowPositionInfo(int pos)
 {
     switch(pos)
@@ -88,6 +88,7 @@ void NameCard::ShowNameCardInfo()
 }
 
 NameCard::~NameCard()
+// constructor 에서 dynamic allocation 한 것을 모두 회수해 주어야 한다.
 {
     delete []name;
     delete []company;

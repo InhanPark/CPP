@@ -1,12 +1,11 @@
 /*
-- Encapsulation (캡슐화) 란 이미 만들어진 class 들을 순서에 따라 배치해서 새로운 class 를 만드는 것이다. 불러오는 class 들을 'private' 으로 선언하면, 외부에서는 어떤 것을 사용했는지 알수가 없어서 정보은닉도 된다.
+Encapsulation (캡슐화) 란 이미 만들어진 class 들을 순서에 따라 배치해서 새로운 class 를 만드는 것이다. 불러오는 class 들을 'private' 으로 선언하면, 외부에서는 어떤 것을 사용했는지 알수가 없어서 정보은닉도 된다.
 - 아래는 Point 로 center 위치를 정하고, 여기에 radius 를 추가하여 Circle 을 만들고, Circle 2개를 모아서 새로운 class 인 Ring 을 만드는 program 이다. Ring class 가 Encapsulation 이다.
-- 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 
 */
 
 #include <iostream>
 
-/* headers */
+/* header */
 class Point
 {
 private:
@@ -50,7 +49,7 @@ int main()
     return 0;
 }
 
-/* functions */
+/* function body */
 bool Point::Init(int x, int y)
 {
     xpos = x;

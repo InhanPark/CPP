@@ -1,9 +1,8 @@
 /*
-- 'class Rectangle' 을 보강 변경한 program 이다.
-- 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 혼용해서 써도 동작한다.
-- C 처럼 main 앞에는 header file 만 만들고, 함수들은 main 뒤쪽에 배치해 보았다.
+'class Rectangle' 의 data 도 은닉하고, 초기화 함수를 통해 접근하게 한 것이다.
 */
 
+/* header */
 #include <iostream>
 
 class Point
@@ -11,7 +10,6 @@ class Point
 private:
     int x;
     int y;
-
 public:
     bool InitMembers(int xpos, int ypos); // 외부에서는 이 함수를 통해서만 변수를 초기화 할 수 있다.
     /* 아래 함수들을 'access function' 이라고 한다. 쓰지 않는 경우에도 기본으로 만들어둔다. */
@@ -26,7 +24,6 @@ class Rectangle
 private:
     Point upLeft;  // 다른 struct 을 call 할 수 있듯이, 다른 class 를 call 할 수 있음
     Point lowRight;
-
 public:
     bool InitMembers(const Point &ul, const Point &lr);
     // 외부에서는 이 함수를 통해서만 변수를 초기화 할 수 있다.
@@ -34,6 +31,7 @@ public:
     // const 함수 내에서는 const가 아닌 함수의 호출이 제한된다. (변경의 가능성 없앰)
 };
 
+/* driver */
 int main()
 {
     Point *pos1_ptr = new Point(); 
@@ -63,6 +61,7 @@ int main()
     return 0;
 }
 
+/* function body */
 bool Point::InitMembers(int xpos, int ypos)
 {
     if(xpos<0 || ypos<0)

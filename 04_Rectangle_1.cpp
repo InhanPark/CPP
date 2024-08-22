@@ -1,13 +1,14 @@
 /*
-- Rectangle 의 좌표를 받아 들이는 program 이다.
-- 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 혼용해서 써도 동작한다.
+Rectangle 의 좌표를 받아 들이는 program 이다.
+- data 만 있는 structure 를 어떻게 구성하고 사용하는지 학습
 */
 
+/* header */
 #include <iostream>
 
 class Point // class 를 struct 로 바꾸어도 동작함
 {
-public:
+public: // private 선언을 하면 외부에서 참조를 할 수 없음
     int x;
     int y;
 };
@@ -17,17 +18,11 @@ class Rectangle // class 를 struct 로 바꾸어도 동작함
 public:
     Point upLeft;  // 다른 struct 을 call 할 수 있듯이, 다른 class 를 call 할 수 있음
     Point lowRight;
-
 public:
-    void ShowRecInfo()
-    {
-        std::cout << "upLeft: " << '[' << upLeft.x << ", ";
-        std::cout << upLeft.y << ']' << std::endl;
-        std::cout << "upRight: " << '[' << lowRight.x << ", ";
-        std::cout << lowRight.y << ']' << std::endl;
-    }        
+    void ShowRecInfo();    
 };
 
+/* driver */
 int main()
 {
     // dynamic allocation 을 하면 초기화가 어려움
@@ -38,3 +33,12 @@ int main()
     rec.ShowRecInfo();
     return 0;
 }
+
+/* function body */
+void Rectangle::ShowRecInfo()
+{
+    std::cout << "upLeft: " << '[' << upLeft.x << ", ";
+    std::cout << upLeft.y << ']' << std::endl;
+    std::cout << "upRight: " << '[' << lowRight.x << ", ";
+    std::cout << lowRight.y << ']' << std::endl;
+}      

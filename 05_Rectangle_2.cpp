@@ -1,11 +1,11 @@
 /*
+Rectangle 의 data 좌표를 private 으로 바꿀때 관련된 변경 사항들임.
 - Information Hiding (정보은닉) 이란 class 외부에서 내부의 어느 부분은 파악할 수 없도록 하는 것이다. 외부에서 이 정보에 직접 접근 자체가 안되도록 되어있다.
 - 아래는 'class Point' 를 보강 변경한 program 이다. 'private:' 을 사용하여 information hiding 을 하였다.
 - 'const' keyword 를 붙여주면, 정보에 간접 접근은 할 수 있더라도, 변경은 안되어, 정보의 safety 를 강화할 수 있다.
-- 'class' 단어를 'struct' 로 바꾸어도 동작을 잘한다. 혼용해서 써도 동작한다.
-- C 처럼 main 앞에는 header file 만 만들고, 함수들은 main 뒤쪽에 배치해 보았다.
 */
 
+/* header */
 #include <iostream>
 
 class Point
@@ -30,16 +30,10 @@ public:
     Point lowRight;
 
 public:
-    void ShowRecInfo()
-    {
-        // 'class Point' 가 외부 class 이므로, x 와 y 값을 직접 access 못한다. GetX() 와 GetY() 를 사용한다.
-        std::cout << "upLeft: " << '[' << upLeft.GetX() << ", ";
-        std::cout << upLeft.GetY() << ']' << std::endl;
-        std::cout << "upRight: " << '[' << lowRight.GetX() << ", ";
-        std::cout << lowRight.GetY() << ']' << std::endl;
-    }        
+    void ShowRecInfo();  
 };
 
+/* driver */
 int main()
 {
     // 초기화를 따로하므로 dynamic allocation 사용 쉬움.
@@ -62,6 +56,7 @@ int main()
     return 0;
 }
 
+/* function body */
 bool Point::InitMembers(int xpos, int ypos)
 {
     if(xpos<0 || ypos<0)
@@ -108,3 +103,12 @@ bool Point::SetY(int ypos)
     y = ypos;
     return true;
 }
+
+void Rectangle::ShowRecInfo()
+{
+    // 'class Point' 가 외부 class 이므로, x 와 y 값을 직접 access 못한다. GetX() 와 GetY() 를 사용한다.
+    std::cout << "upLeft: " << '[' << upLeft.GetX() << ", ";
+    std::cout << upLeft.GetY() << ']' << std::endl;
+    std::cout << "upRight: " << '[' << lowRight.GetX() << ", ";
+    std::cout << lowRight.GetY() << ']' << std::endl;
+}        
