@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-/* headers */
+/* header */
 class Point
 {
 private:
@@ -23,7 +23,7 @@ int main()
     return 0;
 }
 
-/* functions */
+/* function body */
 Point::Point(int x, int y)
 {
     xpos = x;

@@ -93,7 +93,7 @@ void FruitBuyer::BuyApples(FruitSeller &seller, int money)
 // 이때문에 함수를 parameter 로 받았다.
 // 'Fruit Buyer 라는 객체가 Fruit Seller 라는 객체에게서 구매를 하는 행위가 묘사된 code 이다.
 {
-    numOfApples == seller.SaleApples(money);
+    numOfApples += seller.SaleApples(money);
     myMoney -= money;
 }
 
