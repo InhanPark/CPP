@@ -41,9 +41,9 @@ int main()
     manSENIOR.ShowNameCardInfo();
     manAssist.ShowNameCardInfo();
 
-    delete manClerk_ptr;
-    delete manSENIOR_ptr;
-    delete manAssist_ptr;
+    delete &manClerk;
+    delete &manSENIOR;
+    delete &manAssist;
     return 0;
 }
 

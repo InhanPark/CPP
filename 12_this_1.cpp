@@ -16,7 +16,7 @@ private:
     char *name;
     int   score;
 public:
-    Student(int _num, char *_name, int pos);
+    Student(int _num, char *_name, int score);
     Student *GetThisPointer();
     void ShowStudentInfo();
 };
@@ -25,7 +25,7 @@ public:
 int main()
 {
     Student *obj_ptr = new Student(2137, "ihPark", 900); 
-    Student obj = *obj_ptr;
+    Student& obj = *obj_ptr;
     Student *this_ptr = obj.GetThisPointer();
 
     std::cout << obj_ptr << std::endl;
@@ -36,7 +36,7 @@ int main()
     obj_ptr -> ShowStudentInfo();
     this_ptr -> ShowStudentInfo();
 
-    delete obj_ptr;
+    delete &obj;
     // delete this_ptr; // 이것은 동작을 하지 않음
     return 0;
 }

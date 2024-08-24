@@ -52,7 +52,8 @@ int main()
     Rectangle rec = {pos2, pos1}; 
     rec.ShowRecInfo();
 
-    delete pos1_ptr;
+    delete &pos1;
+//  delete pos1_ptr; // 같은 효과를 나타냄
     return 0;
 }
 

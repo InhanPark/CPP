@@ -45,7 +45,7 @@ int main()
         std::cout << "Ring Initialization Error" << std::endl;
     ring.ShowRingInfo();
 
-    delete ring_ptr;
+    delete &ring;
     return 0;
 }
 

@@ -31,7 +31,7 @@ int main()
     // 'this.ShowCurrentNumber()' 이 실행되고 'this.ShowCurrentNumber()->this' 대체
     // 이런식으로 왼쪽에서 오른쪽으로 self reference 를 계속하며 실행됨
     // 이런 동작은 python 에서 자주 볼 수 있는것임.
-    delete obj_ptr;
+    delete &obj;
     return 0;
 }
 

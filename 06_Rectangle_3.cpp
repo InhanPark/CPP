@@ -54,9 +54,13 @@ int main()
 
     rec.ShowRecInfo();
 
-    delete pos1_ptr;
-    delete pos2_ptr;
-    delete rec_ptr;
+
+    delete &pos1;
+    delete &pos2;
+    delete &rec;
+//  delete pos1_ptr; // 같은 효과를 나타냄
+//  delete pos2_ptr; // 같은 효과를 나타냄
+//  delete rec_ptr;  // 같은 효과를 나타냄
 
     return 0;
 }

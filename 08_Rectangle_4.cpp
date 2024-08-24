@@ -46,7 +46,7 @@ int main()
     Rectangle& rec = *rec_ptr;
     rec.ShowRecInfo();
 
-    delete rec_ptr;
+    delete &rec;
     return 0;
 }
 

@@ -54,8 +54,10 @@ int main()
     std::cout << "Fruit Buyer Status" << std::endl;
     buyer.ShowBuyResult();
 
-    delete seller_ptr; // heap memory 에서 삭제
-    delete buyer_ptr; // heap memory 에서 삭제
+    delete &seller; // heap memory 에서 삭제
+    delete &buyer; // heap memory 에서 삭제
+//    delete seller_ptr; // 같은 효과를 나타냄
+//    delete buyer_ptr;  // 같은 효과를 나타냄
     return 0;
 }
 
